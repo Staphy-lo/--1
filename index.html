@@ -124,16 +124,17 @@ function correct(ok) {
   if (ok) {
     current.correctCount = (current.correctCount || 0) + 1;
 
-    if (current.step < schedule.length - 1) {
-      current.step++;
-    }
-
     let days = schedule[current.step];
+
+if (current.step < schedule.length - 1) {
+  current.step++;
+}
     current.next = Date.now() + days * 24 * 60 * 60 * 1000;
 
   } else {
     current.wrongCount = (current.wrongCount || 0) + 1;
 
+  
     current.step = 0;
 
     // 1分後に再出題
