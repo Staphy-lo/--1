@@ -7,7 +7,7 @@
 <style>
 body {
   font-family: sans-serif;
-  font-size: 100px;
+  font-size: 20px;
 }
 
 button {
@@ -110,8 +110,19 @@ function renderList() {
 
     let li = document.createElement("li");
 
-   li");
+    let nextDate =
+      new Date(c.next).toLocaleString("ja-JP");
 
+    li.textContent =
+      c.q +
+      " → " +
+      c.a +
+      " | ○:" +
+      (c.correctCount || 0) +
+      " ×:" +
+      (c.wrongCount || 0) +
+      " | 次回:" +
+      nextDate;
 
     let del = document.createElement("button");
 
@@ -212,6 +223,8 @@ function correct(ok) {
   }
 
   save();
+
+  renderList();
 
   nextCard();
 }
